@@ -68,6 +68,15 @@ Reset_Handler:
   movs r1, #0
   b LoopCopyDataInit
 
+/* begin jump to DFU */
+Reboot_Loader:
+  ldr r0, =0x1FFF0000
+  ldr sp, [r0, #0]
+  ldr r0, [r0, #4]
+  bx r0
+/* end jump to DFU */
+
+
 CopyDataInit:
   ldr r3, =_sidata
   ldr r3, [r3, r1]
