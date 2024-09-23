@@ -35,6 +35,8 @@
 
 #include "wiring.h"
 
+#include "Adafruit_USBD_CDC.h"
+
 /* sketch */
 
 #ifdef __cplusplus

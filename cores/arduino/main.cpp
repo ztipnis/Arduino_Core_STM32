@@ -20,6 +20,8 @@
 #define ARDUINO_MAIN
 #include "Arduino.h"
 
+int tusb_evt_ready = 0;
+
 // Force init to be called *first*, i.e. before static object allocation.
 // Otherwise, statically allocated objects that need HAL may fail.
 __attribute__((constructor(101))) void premain()
@@ -42,12 +44,18 @@ __attribute__((constructor(101))) void premain()
   init();
 }
 
+void OTG_FS_IRQHandler(void){
+  tusb_evt_ready++;
+}
+
 /*
  * \brief Main entry point of Arduino application
  */
 int main(void)
 {
   initVariant();
+
+  TinyUSB_Device_Init(0);
 
   setup();
 
@@ -56,7 +64,12 @@ int main(void)
     CoreCallback();
 #endif
     loop();
+    if( tusb_evt_ready != 0 ){
+      TinyUSB_Device_Task();
+      tusb_evt_ready--;
+    }
     serialEventRun();
+    TinyUSB_Device_FlushCDC();
   }
 
   return 0;
