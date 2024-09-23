@@ -76,7 +76,16 @@ Reset_Handler:
 
 /* Copy the data segment initializers from flash to SRAM */
   movs	r1, #0
-  b	LoopCopyDataInit
+  b LoopCopyDataInit
+
+/* begin jump to DFU */
+Reboot_Loader:
+  ldr r0, =0x0BF90000
+  ldr sp, [r0, #0]
+  ldr r0, [r0, #4]
+  bx r0
+/* end jump to DFU */
+
 
 CopyDataInit:
 	ldr	r3, =_sidata
