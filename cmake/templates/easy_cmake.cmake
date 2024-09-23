@@ -91,7 +91,6 @@ build_sketch(TARGET "{{tgtname or "@binary_name_here@"}}"
   # SD
   # Wire
   # SPI
-  # USBDevice
   # VirtIO
 )
 

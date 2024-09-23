@@ -46,10 +46,6 @@ printf '\n-fmacro-prefix-map="%s"=.' "${prefix}" >>"$BUILD_PATH/sketch/build.opt
 
 # Force include of SrcWrapper library
 echo "#include <SrcWrapper.h>" >"$BUILD_PATH/sketch/requiredLibraries.cpp"
-# Force include of USBDevice library if required
-if [ -n "${BUILD_USB#*=}" ]; then
-  echo "#include <USBDevice.h>" >>"$BUILD_PATH/sketch/requiredLibraries.cpp"
-fi
 # Force include of VirtIO library if required
 if [ -n "${BUILD_VIRTIO#*=}" ]; then
   echo "#include <VirtIO.h>" >>"$BUILD_PATH/sketch/requiredLibraries.cpp"

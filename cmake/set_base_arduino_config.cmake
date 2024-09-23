@@ -57,7 +57,6 @@ target_include_directories(base_config INTERFACE
 	"${BUILD_CORE_PATH}/stm32"
 	"${BUILD_LIB_PATH}/SrcWrapper/inc"
 	"${BUILD_LIB_PATH}/SrcWrapper/inc/LL"
-	"${BUILD_LIB_PATH}/USBDevice/inc"
 	"${BUILD_LIB_PATH}/VirtIO/inc"
 	"${BUILD_SYSTEM_PATH}/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
 	"${BUILD_SYSTEM_PATH}/Middlewares/ST/STM32_USB_Device_Library/Core/Src"

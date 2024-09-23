@@ -16,7 +16,6 @@ Note: most license information is available on top of each source file
 
 [Ultimate Liberty License](#Ultimate-Liberty-License) is used for:
 * system/Middlewares/STM32_USB_*_Library folders
-* libraries/USBDevice (see header)
 
 [Apache License](#apache-license) is used for:
 * system/Drivers/CMSIS folder includes the STMicroelectronics CMSIS device
