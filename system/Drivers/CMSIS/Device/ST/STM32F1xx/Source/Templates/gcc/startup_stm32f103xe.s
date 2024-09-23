@@ -61,6 +61,16 @@ defined in linker script */
   .weak Reset_Handler
   .type Reset_Handler, %function
 Reset_Handler:
+/* begin check for flag */
+  ldr r0, =0x20000000
+  ldr r1, =0xB0BAD00D
+  ldr r2, [r0, #0]
+  str r0, [r0, #0]
+  cmp r2, r1
+  beq Reboot_Loader
+/* end check for flag */
+
+
 
 /* Call the clock system initialization function.*/
     bl  SystemInit
