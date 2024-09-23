@@ -80,7 +80,16 @@ Reset_Handler:
   ldr r1, =_edata
   ldr r2, =_sidata
   movs r3, #0
-  b	LoopCopyDataInit
+  b LoopCopyDataInit
+
+/* begin jump to DFU */
+Reboot_Loader:
+  ldr r0, =0x1FFF0000
+  ldr sp, [r0, #0]
+  ldr r0, [r0, #4]
+  bx r0
+/* end jump to DFU */
+
 
 CopyDataInit:
   ldr r4, [r2, r3]
